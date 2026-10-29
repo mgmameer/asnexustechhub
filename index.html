@@ -146,6 +146,12 @@ section{padding:44px 0!important}
 .btnrow{display:flex;gap:10px;flex-wrap:wrap}.btnrow .btn{flex:1;text-align:center;min-width:140px}
 .btnrow .btn.full{flex-basis:100%;background:var(--ink);color:var(--paper)}
 :root[data-theme="dark"] .btnrow .btn.full{background:var(--sky);color:#fff}
+@media (max-width:820px){
+ .hero .wrap{display:flex!important;flex-direction:column;gap:18px}
+ .herotext{display:contents}
+ .herotext .badge{order:1;align-self:flex-start}.herotext h1{order:2}.herotext>p{order:3;margin:0}
+ .callback{order:4;width:100%}.herotext .hls{order:5}.herotext .cta{order:6}
+}
 </style>
 </head>
 <body>
@@ -161,7 +167,7 @@ section{padding:44px 0!important}
 
 <main id="top">
 <div class="hero"><div class="wrap">
-  <div>
+  <div class="herotext">
     <span class="badge">3 days free demo · Up to 75% OFF</span>
     <h1>Learn cloud, AI and security by building real projects.</h1>
     <p>Live online, job-oriented training in AWS DevOps, AI/ML, Cyber Security and Power BI. Hands-on labs, a capstone project and career support.</p>
@@ -301,7 +307,7 @@ section{padding:44px 0!important}
       <a class="btn" id="upi" href="#pay">Pay ₹5,000 by UPI</a>
       <small style="margin:0">Works with GPay, PhonePe, Paytm and any UPI app. UPI number: <b>7287904544</b>. On a computer, scan or enter this number in your UPI app.</small></div>
     <div class="pcard"><h3>Talk to us first</h3>
-      <p style="margin:0">Ask about the demo, syllabus or the upcoming batch. Ameer will reply on WhatsApp.</p>
+      <p style="margin:0">Ask about the demo, syllabus or the upcoming batch. Our team will reply on WhatsApp.</p>
       <a class="btn wa2" id="wa" href="https://wa.me/917287904544" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
   </div>
 </div></section>
@@ -320,10 +326,10 @@ section{padding:44px 0!important}
   <div class="info">
     <h2>Contact us</h2>
     <p class="lead">Ask about batches, fees or a free demo class. We reply within one working day.</p>
-    <p><strong>Phone / WhatsApp</strong><a href="tel:+917287904544">+91 72879 04544</a> (Ameer)</p>
+    <p><strong>Phone / WhatsApp</strong><a href="tel:+917287904544">+91 72879 04544</a></p>
     <p><strong>Email</strong><a href="mailto:asnexustechhub@gmail.com">asnexustechhub@gmail.com</a></p>
     <p><strong>Location</strong>Hyderabad, Telangana, India (online classes worldwide)</p>
-    <p><strong>Website</strong>asnexustechhub.com</p><p><strong>Contact person</strong>Ameer</p>
+    <p><strong>Website</strong>asnexustechhub.com</p><p><strong>Contact person</strong>Manager (Amir)</p>
   </div>
   <div class="forms">
   <form id="f" novalidate>
