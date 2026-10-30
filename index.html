@@ -199,6 +199,17 @@ section{padding:44px 0!important}
 header .btn{background:#7fd0f7;color:#0f1e3d}
 .callback{scroll-margin-top:84px}
 .dc-link{text-decoration:none;cursor:pointer}.dc-link:hover{text-decoration:underline}a.dc-qr{display:block;cursor:pointer}
+
+/* highlights: ONE light-blue cell, aligned list (no yellow pills) */
+.hls{gap:0;align-items:stretch;background:#e3f2fd;color:#0f1e3d;border:1px solid #b6daf5;border-radius:16px;padding:4px 22px;margin:0 0 22px;max-width:660px}
+.hls .hl,.hls .hl.primary{display:block;background:none;color:inherit;border:0;border-radius:0;box-shadow:none;animation:none;text-decoration:none;font-size:18px;font-weight:600;line-height:1.35;padding:13px 0 13px 34px;margin:0;border-top:1px solid rgba(47,107,255,.2)}
+.hls .hl:first-child{border-top:0}
+.hls .hl.primary{font-size:21px;font-weight:700;padding:16px 0 16px 34px}
+.hls .hl::before,.hls .hl.primary::before{left:2px;width:15px;height:15px;margin-top:-7px;background:#fff176}
+.hls a.hl:hover,.hls a.hl:focus-visible{text-decoration:underline}
+:root[data-theme="dark"] .hls{background:#16305f;color:#eaf0ff;border-color:#2c4f8f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hls{background:#16305f;color:#eaf0ff;border-color:#2c4f8f}}
+@media (max-width:820px){.hls{max-width:none;padding:2px 18px}.hls .hl{font-size:17px}.hls .hl.primary{font-size:19px}}
 </style>
 </head>
 <body>
@@ -221,10 +232,9 @@ header .btn{background:#7fd0f7;color:#0f1e3d}
     <div class="hls">
       <a class="hl primary" href="#placement">Guaranteed Job Placement Program (within 60 days)*</a>
       <div class="hl">Land a Job, before completing Course*</div>
-      <div class="hl">We have good ties with HR teams for your success</div>
-      <div class="hl">Up to 75% OFF: register any course for just ₹5,000</div>
-      <div class="hl">3 days free live demo, no payment needed</div>
+      <div class="hl">We have good ties with HR teams for your success.</div>
       <div class="hl">A small investment for future success. Grab this opportunity.</div>
+      <div class="hl">3 days free live demo</div>
     </div>
     <div class="cta"><a class="btn" href="#contact">Join the 3-day free demo</a><a class="btn alt" href="#courses">View syllabus</a></div>
   </div>
