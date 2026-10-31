@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com; connect-src https://script.google.com https://script.googleusercontent.com https://www.facebook.com https://connect.facebook.net; form-action 'none'; base-uri 'none'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="canonical" href="https://asnexustechhub.com/">
 <meta property="og:type" content="website">
@@ -272,6 +272,13 @@ label.chk>span a{display:inline}
 .ci a,.ci span.v{grid-column:1/-1;grid-row:2;overflow-wrap:anywhere}
 .ci .sub{grid-column:1/-1;grid-row:3;margin:-4px 0 0}
 .ccard .qr img{margin-left:-8px}
+
+/* ===== cookie notice ===== */
+#cbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:100;max-width:780px;margin:0 auto;background:var(--card);color:var(--ink);border:1px solid var(--mist);border-radius:14px;box-shadow:0 10px 34px rgba(15,30,61,.25);padding:14px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+#cbar[hidden]{display:none}
+#cbar p{margin:0;flex:1 1 300px;font-size:14px;line-height:1.45}
+#cbar .cbtn{display:flex;gap:10px}
+#cbar button{font:600 15px "Source Sans 3",system-ui,sans-serif;padding:10px 20px;border-radius:10px;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;min-width:96px}
 </style>
 </head>
 <body>
@@ -555,7 +562,8 @@ label.chk>span a{display:inline}
     <li>Details you type into our forms: name, mobile number, email (optional), course of interest, skills, experience, city and any message.</li>
     <li>Whether you are interested in the Interview Program, and, if you accept its terms, the time you accepted them.</li>
     <li>If you join the Interview Program: your resume, assessment results and other details needed to arrange interviews.</li>
-    <li>A small note stored in your browser to avoid sending the same request twice within a short time, and a simple label for the page you came from. We do not use this website to take card or bank details; UPI payments are made in your own UPI app.</li>
+    <li>If you click Accept on our cookie notice: advertising cookies and page-visit data collected by Meta (Facebook and Instagram) through the Meta Pixel, such as the pages you view and whether you submitted a form. The Pixel does not receive your name, mobile number or email from our forms.</li>
+    <li>A small note stored in your browser to avoid sending the same request twice within a short time, to remember your cookie choice, and a simple label for the page you came from. We do not use this website to take card or bank details; UPI payments are made in your own UPI app.</li>
   </ul></details>
   <details><summary>Why we use it</summary><ul>
     <li>To call or message you about demo classes, batches, fees and courses you asked about.</li>
@@ -567,7 +575,12 @@ label.chk>span a{display:inline}
     <li>We do not sell your personal information.</li>
     <li>Hiring companies and recruiters, only for the Interview Program and only after you have given consent.</li>
     <li>Service providers that help us run the website and communicate with you, such as form-handling and spreadsheet tools (Google), WhatsApp, phone and email services.</li>
+    <li>Meta Platforms (Facebook and Instagram), only if you accept advertising cookies, so we can measure and improve our ads. Meta may use this data under its own privacy policy.</li>
     <li>Authorities, where the law requires it.</li>
+  </ul></details>
+  <details><summary>Cookies and advertising</summary><ul>
+    <li>We use the Meta Pixel only after you click Accept on the cookie notice. If you click Reject, or do not choose, it is not loaded.</li>
+    <li>You can change your choice at any time using Cookie settings in the footer, and you can also manage ad preferences in your Facebook or Instagram account settings.</li>
   </ul></details>
   <details><summary>How long we keep it</summary><ul>
     <li>We keep your information only as long as needed for the purposes above or as required by law, and then delete or anonymise it.</li>
@@ -587,7 +600,11 @@ label.chk>span a{display:inline}
   </ul></details>
 </div></section>
 
-<footer><div class="wrap">© 2026 AS Nexus TechHub. All rights reserved. *Interview Program terms and conditions apply. Fees are in INR; the amount shown at payment applies. <a href="#privacy">Privacy Policy</a> · <a href="#card">Digital card</a> · <a href="https://www.instagram.com/asnexustechhub/" target="_blank" rel="noopener">Instagram</a>
+<div id="cbar" role="dialog" aria-label="Cookie choices" hidden>
+  <p>We would like to use Meta (Facebook and Instagram) advertising cookies to measure and improve our ads. Nothing is loaded unless you accept. <a href="#privacy">Privacy Policy</a></p>
+  <div class="cbtn"><button type="button" id="crej">Reject</button><button type="button" id="cacc">Accept</button></div>
+</div>
+<footer><div class="wrap">© 2026 AS Nexus TechHub. All rights reserved. *Interview Program terms and conditions apply. Fees are in INR; the amount shown at payment applies. <a href="#privacy">Privacy Policy</a> · <a href="#" id="cset">Cookie settings</a> · <a href="#card">Digital card</a> · <a href="https://www.instagram.com/asnexustechhub/" target="_blank" rel="noopener">Instagram</a>
 <p class="tm">Trademarks: all product names, brands and logos mentioned on this site (including AWS, Amazon, Microsoft, Power BI, Excel, Google, Meta, Instagram, WhatsApp, LinkedIn, Docker, Kubernetes, Terraform, Jenkins, GitHub, Linux, Python, TensorFlow and PyTorch) belong to their respective owners and are used only to describe the technologies we teach. AS Nexus TechHub is an independent training provider. We are not affiliated with, sponsored or endorsed by these owners, and our courses are not official certification programs of them.</p></div></footer>
 
 <script>
@@ -704,7 +721,7 @@ function quick(intent){
     return;
   }
   show(m,'Sending...');
-  sendIt().then(()=>{capQ.draw();show(m,'Thanks! We will call you back shortly.','ok');lock($('qf').querySelector('button[type=submit]'))})
+  sendIt().then(()=>{capQ.draw();show(m,'Thanks! We will call you back shortly.','ok');nxLead();lock($('qf').querySelector('button[type=submit]'))})
   .catch(()=>{show(m,'Could not send. Please tap Talk to us first instead.','err')});
 }
 $('qf').addEventListener('submit',e=>{e.preventDefault();quick('Call me back')});
@@ -721,7 +738,7 @@ $('f').addEventListener('submit',e=>{
   const details='Skills: '+$('fs').value.trim()+' | Exp: '+$('fe').value+' | City: '+$('fct').value.trim()+' | Interview program: '+($('fpl').checked?'Interested':'No')+' | Interview terms accepted: '+($('fpl').checked?($('fpt').checked?'Yes ('+new Date().toISOString()+')':'No - confirm in writing before payment'):'n/a')+' | Contact consent: '+($('fk').checked?'Yes':'No')+' | Verify code: '+code;
   show(m,'Sending...');
   send($('f'),{name,phone:ph,email:em,message:$('fmsg').value.trim(),course:$('fc').value,details,source:'Website form'}).then(()=>{
-    mark('f'+ph+$('fc').value);
+    mark('f'+ph+$('fc').value);nxLead();
     $('f').style.display='none';$('qf').style.display='none';
     $('dt').textContent='Thanks '+name+'! We have your details and will contact you shortly.';
     $('vb').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Verify '+code+' - '+name+' ('+ph+') for '+$('fc').value);
@@ -751,6 +768,28 @@ c.addEventListener('click',function(e){if(e.target.closest('a'))return;flip()});
 c.addEventListener('keydown',function(e){if(e.target.closest('a'))return;if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){c.classList.add('dc-intro');io.disconnect()}},{threshold:.5});io.observe(c)}else{c.classList.add('dc-intro')}
 if(location.hash==='#card')setTimeout(function(){document.querySelector('.callback').scrollIntoView({behavior:'smooth',block:'start'})},50);
+})();
+</script>
+<script>
+/* Meta Pixel: loads ONLY after the visitor clicks Accept. No form details are sent to Meta. */
+(function(){
+  var PID='4534518903532182',KEY='nx_cookie',loaded=false;
+  var bar=document.getElementById('cbar');
+  function get(){try{return localStorage.getItem(KEY)}catch(e){return null}}
+  function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
+  function load(){
+    if(loaded)return;loaded=true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init',PID);fbq('track','PageView');
+  }
+  window.nxLead=function(){try{if(loaded&&window.fbq&&get()==='yes')fbq('track','Lead')}catch(e){}};
+  function show(){bar.hidden=false}
+  function hide(){bar.hidden=true}
+  document.getElementById('cacc').addEventListener('click',function(){set('yes');hide();load()});
+  document.getElementById('crej').addEventListener('click',function(){set('no');hide();try{if(window.fbq)fbq('consent','revoke')}catch(e){}});
+  document.getElementById('cset').addEventListener('click',function(e){e.preventDefault();show()});
+  var c=get();
+  if(c==='yes')load();else if(c!=='no')show();
 })();
 </script>
 </body>
